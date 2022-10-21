@@ -6,11 +6,13 @@ import jwt
 import datetime
 from functools import wraps
 
+import os
+
 app = Flask(__name__)
 
-app.config['SECRET_KEY']='fLaG{catchmeifucan}'
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite://///home/manthantrivedi/Documents/Bacancy/bacancy_blogs/flask_auth/myflaskproject/bookstore.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SECRET_KEY']= os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI']= os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
 
 db = SQLAlchemy(app)
 
